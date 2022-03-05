@@ -9,6 +9,7 @@ const connectDb = require('./config/db');
 connectDb()
 
 const goalRouter = require('./router/router');
+const userRouter = require('./router/userRouter')
 
 const errorHandler = require('./middleware/errorMiddleware')
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use('/api/goals', goalRouter)
+app.use('/api/users', userRouter)
 
 
 
