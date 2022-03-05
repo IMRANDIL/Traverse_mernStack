@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const { registerUser, loginUser, getMe } = require('../controller/userController');
+const { protectRoute } = require('../middleware/authMiddleware');
 
 
 
@@ -8,7 +9,7 @@ const { registerUser, loginUser, getMe } = require('../controller/userController
 
 router.post('/', registerUser);
 router.post('/login', loginUser);
-router.get('/me', getMe);
+router.get('/me', protectRoute, getMe);
 
 
 

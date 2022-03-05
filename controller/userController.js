@@ -123,7 +123,17 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 
 
 exports.getMe = asyncHandler(async (req, res, next) => {
-    res.json({ msg: 'my data' })
+
+    const { _id, name, email } = await User.findById(req.user.id);
+
+    res.status(200).json({
+        id: _id,
+        name,
+        email
+    })
+
+
+
 });
 
 

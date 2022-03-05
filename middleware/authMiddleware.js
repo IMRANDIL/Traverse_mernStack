@@ -27,13 +27,14 @@ exports.protectRoute = asyncHandler(async (req, res, next) => {
 
             req.user = await User.findById(decoded.id).select('-password'); //learned new thing..that - one.
 
-            next()
 
+            next()
 
         } catch (error) {
             console.log(error);
             res.status(401);
             throw new Error('Not authorized')
+
         }
     }
 
